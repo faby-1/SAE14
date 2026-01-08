@@ -2,10 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-portfolio</title>
 
     <style>
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
@@ -13,242 +14,225 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            color: #ffffff;
-            min-height: 100vh;
-            transition: background 0.6s ease, color 0.6s ease;
+            font-family: "Poppins", sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
-       
-        .hero {
-            position: relative;
-            min-height: 100vh;
+        /* --- THEMES --- */
+
+        /* Thème clair */
+        body.light {
+            background: #f8f3f6;
+            color: #4a3b3b;
+        }
+
+        /* Thème sombre */
+        body.dark {
+            background: #1a1416;
+            color: #f2e6ea;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            padding: 20px 50px;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            background: radial-gradient(circle at top left, #ff4b4b 0, #5a0000 35%, #050505 80%);
-            overflow: hidden;
-            transition: background 0.8s ease, filter 0.8s ease;
+            align-items: center;
+            background: #ffffffcc;
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e8d8df;
         }
 
-        
-        .hero::before,
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 70vmax;
-            height: 70vmax;
-            background: radial-gradient(circle, rgba(255, 0, 0, 0.55), transparent 60%);
-            filter: blur(40px);
-            opacity: 0.8;
-            z-index: 0;
-            animation: float 12s ease-in-out infinite alternate;
+        body.dark .header {
+            background: #2a1f22cc;
+            border-bottom: 1px solid #5a3f46;
         }
 
-        .hero::before {
-            top: -20vmax;
-            left: -10vmax;
-        }
-
-        .hero::after {
-            bottom: -25vmax;
-            right: -15vmax;
-            background: radial-gradient(circle, rgba(120, 0, 0, 0.8), transparent 60%);
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -40px) scale(1.1); }
-        }
-
-        
-        .nav {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: flex-end;
-            gap: 2rem;
-            padding: 1.5rem 4vw;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.12em;
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #c06c84;
+            letter-spacing: 1px;
         }
 
         .nav a {
-            color: #f8f8f8;
+            margin-left: 25px;
             text-decoration: none;
-            transition: color 0.2s ease, transform 0.2s ease;
+            color: inherit;
+            font-weight: 500;
+            transition: 0.3s;
         }
 
         .nav a:hover {
-            color: #ffdedf;
-            transform: translateY(-1px);
+            color: #c06c84;
         }
 
-        /* ----- BOUTON THEME ANIMÉ ----- */
-        #theme-toggle {
+        /* Bouton thème */
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
             background: transparent;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.8rem;
             cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            font-weight: 500;
+            transition: 0.3s;
         }
 
-        #theme-toggle:hover {
-            background: #fff;
-            color: #000;
+        .theme-btn:hover {
+            opacity: 0.7;
         }
 
-        #theme-toggle::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.15);
-            transform: rotate(45deg) translate(-100%, -100%);
-            transition: transform 0.6s ease;
-        }
-
-        #theme-toggle:hover::after {
-            transform: rotate(45deg) translate(0%, 0%);
-        }
-
-        #theme-toggle:active {
-            transform: scale(0.95) rotate(3deg);
-        }
-
-       
-        .hero-center {
-            position: relative;
-            z-index: 1;
-            flex: 1;
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            padding: 20px;
             text-align: center;
-            padding: 2rem 1rem;
         }
 
-        .hero-inner {
+        body.dark .hero {
+            background: linear-gradient(135deg, #3a2a2f, #5a3f46, #7a5560);
+        }
+
+        .hero-content {
             max-width: 700px;
-            animation: fadeIn 1.2s ease forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-kicker {
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.75rem;
-            color: #ffb3b3;
-            margin-bottom: 1rem;
         }
 
         .hero-title {
-            font-size: clamp(2.8rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #ffe5e5;
+        .hero-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #c06c84;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a85a72;
+        }
+    </style>
+</head>
+
+<body class="light">
+
+    <header class="header">
+        <h1 class="logo">e-portfolio</h1>
 
         
-        body.light-theme {
-            background: #ffffff;
-            color: #000000;
+      
+
+        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">FATOU BINETOU DIALLO  GROUP A2</h2>
+            <p class="hero-text">
+                Welcome to my website. Here you find a Bachelor of Technology (BUT) student in Networks and Telecommunications, combining technical rigor with a strong understanding of modern communication infrastructures and network systems.
+            </p>
+             <a href="{{ path('pourensavoirplus') }}" class="btn primary">
+    Discover more
+
+</a>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle("dark");
+            body.classList.toggle("light");
+        }
+    </script>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
-        body.light-theme .hero {
-            background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
-            filter: brightness(1.1);
+        /* Thème clair */
+        body.light {
+            background: #f8f3f6;
+            color: #4a3b3b;
         }
 
-        body.light-theme .nav a,
-        body.light-theme #theme-toggle {
-            color: #000000;
-            border-color: #000000;
+        /* Thème sombre */
+        body.dark {
+            background: #1a1416;
+            color: #f2e6ea;
         }
 
-        body.light-theme .hero-title,
-        body.light-theme .hero-subtitle {
-            color: #222222;
-        }
-
-        @media (max-width: 600px) {
-            .nav {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-                font-size: 0.8rem;
-            }
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
         }
     </style>
 </head>
 
 <body>
-    <section class="hero">
 
-        
-        <nav class="nav">
-           <a href="{{ path('pourensavoirplus') }}" class="btn primary">
-    Pour en savoir plus
-</a>
+   
 
-         
-            <button id="theme-toggle">Changer le théme</button>
-        </nav>
-
-        <div class="hero-center">
-            <div class="hero-inner">
-                <div class="hero-kicker">MY PORTFOLIO</div>
-                <h1 class="hero-title">Fatou Binetou Diallo Groupe A2</h1>
-                <p class="hero-subtitle">
-                    Étudiante en 1ʳᵉ année de BUT Réseaux & Télécoms, j’explore les coulisses du numérique en apprenant à connecter, sécuriser et faire dialoguer les technologies qui façonnent notre monde.
-                </p>
-            </div>
-        </div>
-        <footer>
-    <p>© 2025 Fatou Binetou Diallo — BUT Réseaux & Télécommunications</p>
-</footer>
-
-
-    </section>
-
+  
 
     <script>
-        const toggleBtn = document.getElementById("theme-toggle");
-
-        
+        // Charger le thème enregistré
         const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "light") {
-            document.body.classList.add("light-theme");
+
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        } else {
+            document.body.classList.add("light"); // thème par défaut
         }
 
-      
-        toggleBtn.addEventListener("click", () => {
-            document.body.classList.toggle("light-theme");
+        // Fonction pour changer le thème
+        function toggleTheme() {
+            const body = document.body;
 
-            if (document.body.classList.contains("light-theme")) {
-                localStorage.setItem("theme", "light");
-            } else {
+            if (body.classList.contains("light")) {
+                body.classList.replace("light", "dark");
                 localStorage.setItem("theme", "dark");
+            } else {
+                body.classList.replace("dark", "light");
+                localStorage.setItem("theme", "light");
             }
-        });
+        }
     </script>
+
+</body>
+</html>
+
 
 </body>
 </html>

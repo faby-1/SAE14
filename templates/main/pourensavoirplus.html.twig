@@ -1,357 +1,308 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portfolio – Fatou Binetou Diallo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: system-ui, sans-serif;
-      background: #050505;
-      color: #ffffff;
-      transition: background 0.6s ease, color 0.6s ease;
-    }
+        body {
+            font-family: "Poppins", sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
 
-    /* ===== HEADER ===== */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 4vw;
-      position: sticky;
-      top: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
+       
+        body.light {
+            background: #f8f3f6;
+            color: #4a3b3b;
+        }
 
-    .nav {
-      display: flex;
-      gap: 2rem;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-    }
+        body.dark {
+            background: #1a1416;
+            color: #f2e6ea;
+        }
 
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+        /* HEADER */
+        .header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffcc;
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e8d8df;
+        }
 
-    .nav a:hover {
-      color: #ffb3b3;
-      transform: translateY(-2px);
-    }
+        body.dark .header {
+            background: #2a1f22cc;
+            border-bottom: 1px solid #5a3f46;
+        }
 
-    #theme-toggle {
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #c06c84;
+            letter-spacing: 1px;
+        }
 
-    #theme-toggle:hover {
-      background: #fff;
-      color: #000;
-    }
+        .nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    /* ===== HERO ===== */
-    .hero-section {
-      position: relative;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(120deg, #b31217, #000000);
-      overflow: hidden;
-    }
+        .nav a:hover {
+            color: #c06c84;
+        }
 
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,75,75,0.45), transparent 70%);
-      top: -200px;
-      left: -200px;
-      animation: float 10s infinite alternate ease-in-out;
-    }
+        /* Bouton thème */
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    @keyframes float {
-      from { transform: translate(0,0); }
-      to { transform: translate(80px, 60px); }
-    }
+        .theme-btn:hover {
+            opacity: 0.7;
+        }
 
-    .hero-section h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 900;
-      letter-spacing: 4px;
-      margin-bottom: 1.5rem;
-      z-index: 1;
-      animation: fadeUp 1s ease-out;
-    }
+       
+        .hero {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            padding: 20px;
+            text-align: center;
+        }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        body.dark .hero {
+            background: linear-gradient(135deg, #3a2a2f, #5a3f46, #7a5560);
+        }
 
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      z-index: 1;
-    }
+        .hero-content {
+            max-width: 700px;
+        }
 
-    .hero-buttons a {
-      padding: 14px 36px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #fff;
-      border: 2px solid #fff;
-      transition: all 0.35s ease;
-    }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-    .hero-buttons a.primary {
-      background: #ff4b4b;
-      border-color: #ff4b4b;
-    }
+        .hero-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-    .hero-buttons a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #c06c84;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-    /* ===== SECTIONS ===== */
-    .info-section {
-      padding: 4rem 2rem;
-      background: #1a1a1a;
-    }
+        .btn:hover {
+            background: #a85a72;
+        }
 
-    .section-title {
-      text-align: center;
-      font-size: 2.4rem;
-      margin-bottom: 3rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #ff4b4b, #ffb3b3);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        
+        .about {
+            padding: 80px 10%;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
+        .about-text {
+            flex: 1;
+        }
 
-    .info-card {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px);
-      padding: 2.2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #c06c84;
+        }
 
-    .info-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.45);
-    }
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
 
-    .info-card h3 {
-      margin-bottom: 1rem;
-      color: #ffdedf;
-      font-size: 1.4rem;
-    }
+        .about-photo {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
 
-    .info-card p {
-      color: #ffdede;
-      line-height: 1.7rem;
-    }
+        .about-photo div {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            background: #f8bbd0;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
 
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: #050505;
-      color: #ffdede;
-      font-size: 0.9rem;
-    }
+        body.dark .about-photo div {
+            background: #5a3f46;
+        }
 
-    /* ===== LIGHT MODE ===== */
-    body.light-theme {
-      background: #ffffff;
-      color: #000;
-    }
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
 
-    body.light-theme header {
-      background: rgba(255,255,255,0.7);
-    }
+<body class="light">
 
-    body.light-theme .nav a,
-    body.light-theme #theme-toggle {
-      color: #000;
-      border-color: #000;
-    }
+    <header class="header">
+        <h1 class="logo">e-portfolio</h1>
 
-    body.light-theme .hero-section {
-      background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
-    }
+        <nav class="nav">
+             <a href="{{ path('accueil') }}" class="btn primary">
+    Accueil
+</a>
+           <a href="{{ path('cv') }}" class="btn primary">
+    CV
+</a>          
+  <a href="#">Portfolio</a>
+            <a href="{{ path('contact') }}" class="btn primary">
+      Contact</a>
+        </nav>
 
-    body.light-theme .info-section {
-      background: #f5f5f5;
-    }
+        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
+    </header>
 
-    body.light-theme .info-card {
-      background: rgba(255,255,255,0.9);
-      color: #000;
-    }
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">ABOUT ME</h2>
+            <p class="hero-text">
+                
+            </p>
+            <a href="#" class="btn">Découvrir mes services</a>
+        </div>
+    </section>
 
-    body.light-theme .info-card p {
-      color: #333;
-    }
+    <!-- SECTION À PROPOS -->
+    <section class="about">
+        <div class="about-text">
+            <h2>À propos de moi</h2>
+            <p>
+                Passionnée par le numérique, la création et l’innovation, j’accompagne les projets 
+                avec une approche élégante, moderne et professionnelle.  
+                Mon objectif est de transformer vos idées en expériences visuelles uniques, 
+                tout en respectant votre identité et vos valeurs.
+            </p>
+        </div>
 
-    body.light-theme footer {
-      background: #eaeaea;
-      color: #000;
-    }
-  </style>
+        <div class="about-photo">
+            <div></div>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+            document.body.classList.toggle("light");
+            
+        }
+    </script>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec thème persistant</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* Thème clair */
+        body.light {
+            background: #f8f3f6;
+            color: #4a3b3b;
+        }
+
+        /* Thème sombre */
+        body.dark {
+            background: #1a1416;
+            color: #f2e6ea;
+        }
+
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-  <nav class="nav">
-    <a href="acceuil.html">Accueil</a>
-    <a href="#">Passions</a>
-    <a href="#"></a>
-    <a href="#"></a>
-  </nav>
-  <button id="theme-toggle">Changer le thème</button>
-</header>
+    
 
-<section class="hero-section">
-  <h1>À PROPOS DE MOI</h1>
-  <div class="hero-buttons">
-    <a href="#" class="primary">PORTFOLIO</a>
-    <a href="#" class="primary">CV</a>
-  </div>
-</section>
+    
 
-<section class="info-section">
-  <h2 class="section-title">Qui suis-je ?</h2>
-  <div class="info-grid">
-    <div class="info-card">
-      <h3>Présentation</h3>
-      <p>
-        Étudiante en première année de BUT Réseaux & Télécommunications,
-        je développe des compétences en administration système,
-        infrastructures réseau et cybersécurité.
-      </p>
-    </div>
+    <script>
+     
+        const savedTheme = localStorage.getItem("theme");
 
-    <div class="info-card">
-      <h3>Compétences</h3>
-      <p>
-        Configuration réseau, bases Linux, sécurité, compréhension
-        des architectures informatiques et technologies numériques.
-      </p>
-    </div>
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        } else {
+            document.body.classList.add("light"); // thème par défaut
+        }
 
-    <div class="info-card">
-      <h3>Loisirs</h3>
-      <p>
-        Musique, voyages, découverte de nouvelles cultures
-        et exploration de l’univers digital.
-      </p>
-    </div>
+        
+        function toggleTheme() {
+            const body = document.body;
 
-    <div class="info-card">
-      <h3>Ambitions</h3>
-      <p>
-        Évoluer dans les domaines des réseaux, de la cybersécurité
-        ou de l’administration système et contribuer à des
-        infrastructures fiables et sécurisées.
-      </p>
-    </div>
-  </div>
-</section>
-<section class="info-section">
-  <h2 class="section-title">Qui suis-je ?</h2>
-  <div class="info-grid">
-    <div class="info-card">
-      <h3>Présentation</h3>
-      <p>
-        Étudiante en première année de BUT Réseaux & Télécommunications,
-        je développe des compétences en administration système,
-        infrastructures réseau et cybersécurité.
-      </p>
-    </div>
+            if (body.classList.contains("light")) {
+                body.classList.replace("light", "dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                body.classList.replace("dark", "light");
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
 
-    <div class="info-card">
-      <h3>Compétences</h3>
-      <p>
-        Configuration réseau, bases Linux, sécurité, compréhension
-        des architectures informatiques et technologies numériques.
-      </p>
-    </div>
+</body>
+</html>
 
-    <div class="info-card">
-      <h3>Loisirs</h3>
-      <p>
-        Musique, voyages, découverte de nouvelles cultures
-        et exploration de l’univers digital.
-      </p>
-    </div>
-
-    <div class="info-card">
-      <h3>Ambitions</h3>
-      <p>
-        Évoluer dans les domaines des réseaux, de la cybersécurité
-        ou de l’administration système et contribuer à des
-        infrastructures fiables et sécurisées.
-      </p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2025 Fatou Binetou Diallo — Portfolio BUT Réseaux & Télécommunications
-</footer>
-
-<script>
-  const toggleBtn = document.getElementById("theme-toggle");
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "light") {
-    document.body.classList.add("light-theme");
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-    localStorage.setItem(
-      "theme",
-      document.body.classList.contains("light-theme") ? "light" : "dark"
-    );
-  });
-</script>
 
 </body>
 </html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cContact</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            transition: 0.4s;
+        }
+
+        /* THEMES */
+        body.light { background: #f8f3f6; color: #4a3b3b; }
+        body.dark { background: #1a1416; color: #f2e6ea; }
+
+        /* NAVBAR */
+        .header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff33;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ffffff55;
+        }
+
+        body.dark .header {
+            background: #00000033;
+            border-bottom: 1px solid #ffffff22;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #c06c84;
+        }
+
+        .nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #c06c84;
+        }
+
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .theme-btn:hover {
+            opacity: 0.7;
+        }
+
+        /* FORM CONTAINER */
+        .container {
+            max-width: 600px;
+            margin: 120px auto;
+            padding: 40px;
+            background: #ffffffaa;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        body.dark .container {
+            background: #2a1f22aa;
+        }
+
+        .container h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #c06c84;
+        }
+
+        .container p {
+            margin-bottom: 25px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid #c06c84;
+        }
+
+        input {
+            background: #ffffffcc;
+        }
+
+        body.dark input {
+            background: #ffffff22;
+            color: white;
+        }
+
+        button {
+            background: #c06c84;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #a85a72;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="header">
+        <h1 class="logo">e-portfolio</h1>
+
+         <nav class="nav">
+             <a href="{{ path('accueil') }}" class="btn primary">
+    Accueil
+</a>
+           <a href="{{ path('cv') }}" class="btn primary">
+    CV
+</a>          
+  <a href="#">Portfolio</a>
+            <a href="{{ path('contact') }}" class="btn primary">
+      Contact</a>
+        </nav>
+
+
+        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
+    </header>
+
+    <!-- FORMULAIRE -->
+    <div class="container">
+        <h2>Identification requise</h2>
+        <p>Veuillez entrer vos informations pour accéder au téléchargement du CV.</p>
+
+        <input type="text" id="name" placeholder="Votre nom">
+        <input type="email" id="email" placeholder="Votre email">
+
+        <button onclick="saveIdentity()">S’identifier</button>
+    </div>
+
+    <script>
+        // Charger le thème
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.body.classList.add(savedTheme);
+
+        // Changer le thème
+        function toggleTheme() {
+            if (document.body.classList.contains("light")) {
+                document.body.classList.replace("light", "dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.replace("dark", "light");
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        // Sauvegarder l'identité
+        function saveIdentity() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (name === "" || email === "") {
+                alert("Veuillez remplir tous les champs.");
+                return;
+            }
+
+            localStorage.setItem("userName", name);
+            localStorage.setItem("userEmail", email);
+
+            alert("Identification réussie !");
+            window.location.href = "cv.html";
+        }
+    </script>
+
+</body>
+</html>

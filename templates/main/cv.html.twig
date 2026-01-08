@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon CV - Élégance Studio</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* THEMES */
+        body.light {
+            background: #f8f3f6;
+            color: #4a3b3b;
+        }
+
+        body.dark {
+            background: #1a1416;
+            color: #f2e6ea;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffcc;
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #e8d8df;
+        }
+
+        body.dark .header {
+            background: #2a1f22cc;
+            border-bottom: 1px solid #5a3f46;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #c06c84;
+        }
+
+        .nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #c06c84;
+        }
+
+        .theme-btn {
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid currentColor;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        /* CV SECTION */
+        .cv-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: #ffffffaa;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        body.dark .cv-container {
+            background: #2a1f22aa;
+        }
+
+        .cv-title {
+            font-size: 2.4rem;
+            color: #c06c84;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #c06c84;
+        }
+
+        .section p, .section li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .cv-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+   <header class="header">
+        <h1 class="logo">e-portfolio</h1>
+
+        <nav class="nav">
+             <a href="{{ path('accueil') }}" class="btn primary">
+    Accueil
+</a>
+           <a href="{{ path('cv') }}" class="btn primary">
+    CV
+</a>          
+  <a href="#">Portfolio</a>
+            <a href="{{ path('contact') }}" class="btn primary">
+      Contact</a>
+        </nav>
+        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
+    </header>
+
+    <div class="cv-container">
+        <h2 class="cv-title">Ingenieure infrastructures réseaux et télécommunications</h2>
+        <h3>Construire les réseaux d’aujourd’hui, sécuriser les communications de demain.</h3>
+
+        <!-- IDENTITÉ -->
+        <div class="section">
+            <h3>Informations personnelles</h3>
+            <p><strong>Nom :</strong> Fatou Binetou Diallo</p>
+            <p><strong>Email :</strong> dfatoubintou400@gmail.com</p>
+            <p><strong>Téléphone :</strong> 0759805034</p>
+            <p><strong>Adresse :</strong> 52 boulevard de belgique,42300,ROANNE,France</p>
+            <p><strong>Étudiante motivée, je combine sens de l’organisation, esprit d’analyse et volonté d’apprendre pour évoluer dans un environnement professionnel exigeant.</p>
+
+        </div>
+
+        <div class="section">
+            <h3>Experiences professionnel</h3>
+            <ul>
+                <li><strong>Caissière
+Auchan - Juin 2024 à septembre 2024 - CDD - Dakar - Sénégal:</strong> Service et relation client dynamique : Accueil des clients, prise de commandes, service
+en salle lors des pics d'affluence, démontrant un excellent sens du contact et une
+résistance au stress.</li>
+                <li><strong>Benevolat
+OPAN - Août 2025:</strong> monitrice d'un camp de vacance pendant 15 jours
+animation activité pour enfant. </li>
+<li><strong>Employée Polyvalente à KFC,YOFF,SENEGAL - Aout 2022 à septembre2022:</strong> travail en équipe coordonné : Collaboration étroite avec la
+cuisine et le reste du personnel de salle pour assurer une
+fluidité parfaite du service </li>
+            </ul>
+        </div>
+
+      
+        <div class="section">
+            <h3>Formations</h3>
+            <ul>
+                <li><strong>Premiere année BUT reseaux et telcommunication
+</strong> – IUT de ROANNE ( septembre 2025 - présent)</li>
+                <li><strong> Baccalauréat de sciences experimentales</strong>
+ - ECOLE PRIVÉE MAME ABDOU DABAKH
+(Octobre 2024 à juillet 2025) : Mention assez bien Formation que j'ai fait au
+Sénégal et qui m'a apporté un bagage scientifique lourd, notamment en
+mathématiques
+</li>
+ <li><strong> brevet de fin d'étude moyen</strong>
+(Octobre 2021 à juillet 2022)
+ - ECOLE PRIVÉE MAME ABDOU DABAKH
+(Octobre 2024 à juillet 2025)</li>
+
+            </ul>
+        </div>
+
+      
+        <div class="section">
+            <h3>Compétences</h3>
+            <ul>
+                <li>Polyvalence</li>
+                <li>assistance de l'administrateur réseaux</li>
+                <li>HTML / CSS / Web</li>
+                <li>Travail en équipe</li>
+                <li>Communication professionnelle</li>
+            </ul>
+        </div>
+
+       
+
+        <!-- CENTRES D'INTÉRÊT -->
+        <div class="section">
+            <h3>Langues</h3>
+            <p><strong> Français</strong>: courant
+            <p><strong> Anglais</strong>: niveau B1
+        </div>
+        <div class="section">
+            <h3>Centres d'interet</h3>
+            <p><strong> Sport</strong>
+            <p><strong> photographie</strong>
+            <p><strong> Découverte</strong>
+            
+        </div>
+    </div>
+    <div id="download-area" style="text-align:center; margin-top:30px;"></div>
+
+<script>
+    // Charger le thème
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.classList.add(savedTheme);
+
+    // Vérifier l'identité
+    const userName = localStorage.getItem("userName");
+    const userEmail = localStorage.getItem("userEmail");
+
+    const area = document.getElementById("download-area");
+
+    if (userName && userEmail) {
+        area.innerHTML = `
+            <p>Bonjour <strong>${userName}</strong>, vous pouvez télécharger mon CV :</p>
+            <a href="cv.pdf" download class="btn">Télécharger le CV</a>
+        `;
+    } else {
+        area.innerHTML = `
+            <p style="color:#c06c84; font-weight:600;">
+                Vous devez vous identifier avant de télécharger le CV.
+            </p>
+            <a href="contact.html" class="btn">Aller à la page Contact</a>
+        `;
+    }
+</script>
+
+
+    <script>
+        // Charger le thème enregistré
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        } else {
+            document.body.classList.add("light");
+        }
+
+        // Changer le thème
+        function toggleTheme() {
+            if (document.body.classList.contains("light")) {
+                document.body.classList.replace("light", "dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.replace("dark", "light");
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+
+</body>
+</html>
