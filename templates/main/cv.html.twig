@@ -118,6 +118,17 @@
                 padding: 20px;
             }
         }
+        
+footer {
+    padding: 30px 10%;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #e0c3cc;
+}
+
+body.dark footer {
+    border-top: 1px solid #5a3f46;
+}
     </style>
 </head>
 
@@ -133,7 +144,9 @@
            <a href="{{ path('cv') }}" class="btn primary">
     CV
 </a>          
-  <a href="#">Portfolio</a>
+   <a href="{{ path('portfolio') }}" class="btn primary">
+    Portfolio
+</a>         
             <a href="{{ path('contact') }}" class="btn primary">
       Contact</a>
         </nav>
@@ -268,6 +281,10 @@ mathématiques
             }
         }
     </script>
+    <footer>
+    © 2026 – e-portfolio |  Tous droits réservés
+</footer>
+
 
 </body>
 </html>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>About</title>
 
     <style>
-       
         * {
             margin: 0;
             padding: 0;
@@ -18,7 +19,6 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-       
         body.light {
             background: #f8f3f6;
             color: #4a3b3b;
@@ -31,26 +31,22 @@
 
         /* HEADER */
         .header {
-            width: 100%;
             padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #ffffffcc;
             backdrop-filter: blur(6px);
-            border-bottom: 1px solid #e8d8df;
         }
 
         body.dark .header {
             background: #2a1f22cc;
-            border-bottom: 1px solid #5a3f46;
         }
 
         .logo {
             font-size: 1.7rem;
             font-weight: 600;
             color: #c06c84;
-            letter-spacing: 1px;
         }
 
         .nav a {
@@ -58,75 +54,61 @@
             text-decoration: none;
             color: inherit;
             font-weight: 500;
-            transition: 0.3s;
         }
 
         .nav a:hover {
             color: #c06c84;
         }
 
-        /* Bouton thème */
         .theme-btn {
             padding: 8px 18px;
             border-radius: 25px;
             border: 1px solid currentColor;
             background: transparent;
             cursor: pointer;
-            font-weight: 500;
-            transition: 0.3s;
         }
 
-        .theme-btn:hover {
-            opacity: 0.7;
-        }
-
-       
+        /* HERO */
         .hero {
             height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
 
         body.dark .hero {
             background: linear-gradient(135deg, #3a2a2f, #5a3f46, #7a5560);
         }
 
-        .hero-content {
-            max-width: 700px;
-        }
-
         .hero-title {
             font-size: 3rem;
-            font-weight: 700;
             margin-bottom: 15px;
         }
 
         .hero-text {
             font-size: 1.2rem;
-            line-height: 1.6;
             margin-bottom: 30px;
         }
 
         .btn {
-            display: inline-block;
             padding: 14px 32px;
             background: #c06c84;
             color: white;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.3s;
+            display: inline-block;
+            margin: 10px;
         }
 
         .btn:hover {
             background: #a85a72;
         }
 
-        
+        /* ABOUT */
         .about {
             padding: 80px 10%;
             display: flex;
@@ -134,174 +116,183 @@
             align-items: center;
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+        .about h2 {
             color: #c06c84;
+            margin-bottom: 20px;
         }
 
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.7;
+        /* LOISIRS */
+        .loisirs {
+            padding: 80px 10%;
+            text-align: center;
         }
 
-        .about-photo {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        .loisirs h2 {
+            color: #c06c84;
+            margin-bottom: 40px;
         }
 
-        .about-photo div {
-            width: 280px;
-            height: 280px;
+        .loisirs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .loisir-card {
             border-radius: 20px;
-            background: #f8bbd0;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        body.dark .about-photo div {
-            background: #5a3f46;
+        .loisir-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
         }
 
-        /* RESPONSIVE */
+        .loisir-card p {
+            padding: 15px;
+            font-weight: 500;
+        }
+
         @media (max-width: 900px) {
             .about {
                 flex-direction: column;
                 text-align: center;
             }
         }
-    </style>
-</head>
+        
+footer {
+    padding: 30px 10%;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #e0c3cc;
+}
 
-<body class="light">
+body.dark footer {
+    border-top: 1px solid #5a3f46;
+}
+/* RÉSEAUX SOCIAUX FOOTER */
+.footer-socials {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
 
-    <header class="header">
-        <h1 class="logo">e-portfolio</h1>
+.footer-socials a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #c06c84;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
 
-        <nav class="nav">
-             <a href="{{ path('accueil') }}" class="btn primary">
-    Accueil
-</a>
-           <a href="{{ path('cv') }}" class="btn primary">
-    CV
-</a>          
-  <a href="#">Portfolio</a>
-            <a href="{{ path('contact') }}" class="btn primary">
-      Contact</a>
-        </nav>
+.footer-socials a:hover {
+    background: #a85a72;
+    transform: translateY(-4px);
+}
 
-        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
-    </header>
+body.dark .footer-socials a {
+    background: #7a5560;
+}
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2 class="hero-title">ABOUT ME</h2>
-            <p class="hero-text">
-                
-            </p>
-            <a href="#" class="btn">Découvrir mes services</a>
-        </div>
-    </section>
-
-    <!-- SECTION À PROPOS -->
-    <section class="about">
-        <div class="about-text">
-            <h2>À propos de moi</h2>
-            <p>
-                Passionnée par le numérique, la création et l’innovation, j’accompagne les projets 
-                avec une approche élégante, moderne et professionnelle.  
-                Mon objectif est de transformer vos idées en expériences visuelles uniques, 
-                tout en respectant votre identité et vos valeurs.
-            </p>
-        </div>
-
-        <div class="about-photo">
-            <div></div>
-        </div>
-    </section>
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle("dark");
-            document.body.classList.toggle("light");
-            
-        }
-    </script>
-    <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page avec thème persistant</title>
-
-    <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-
-        /* Thème clair */
-        body.light {
-            background: #f8f3f6;
-            color: #4a3b3b;
-        }
-
-        /* Thème sombre */
-        body.dark {
-            background: #1a1416;
-            color: #f2e6ea;
-        }
-
-        .theme-btn {
-            padding: 8px 18px;
-            border-radius: 25px;
-            border: 1px solid currentColor;
-            background: transparent;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.3s;
-        }
     </style>
 </head>
 
 <body>
 
-    
+<header class="header">
+    <h1 class="logo">e-portfolio</h1>
 
-    
+    <nav class="nav">
+        <a href="{{ path('accueil') }}">Accueil</a>
+        <a href="{{ path('cv') }}">CV</a>
+        <a href="{{ path('portfolio') }}">Portfolio</a>
+        <a href="{{ path('contact') }}">Contact</a>
+    </nav>
 
-    <script>
-     
-        const savedTheme = localStorage.getItem("theme");
+    <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
+</header>
 
-        if (savedTheme) {
-            document.body.classList.add(savedTheme);
-        } else {
-            document.body.classList.add("light"); // thème par défaut
-        }
+<section class="hero">
+    <div>
+        <h2 class="hero-title">Découvrez-en plus sur moi</h2>
+        <p class="hero-text">
+           A travers cet page, vous decouvrirez ce qui de moi la personne que je suis
+        </p>
+
+
 
         
-        function toggleTheme() {
-            const body = document.body;
+    </div>
+</section>
 
-            if (body.classList.contains("light")) {
-                body.classList.replace("light", "dark");
-                localStorage.setItem("theme", "dark");
-            } else {
-                body.classList.replace("dark", "light");
-                localStorage.setItem("theme", "light");
-            }
+
+<section class="loisirs">
+    <h1>Mes loisirs & passions</h1>
+    
+
+    <div class="loisirs-grid">
+        <div class="loisir-card">
+            <img src="/manga.png" alt="MANGA">
+            <p>MANGA</p>
+        </div>
+
+        <div class="loisir-card">
+            <img src="/paysage.png" alt="Photographie">
+            <p>Photographie</p>
+        </div>
+
+        <div class="loisir-card">
+            <img src="/afrique.png" alt="Voyage">
+            <p>Culture Africaine</p>
+        </div>
+         <div class="loisir-card">
+            <img src="/informatique.png" alt="Voyage">
+            <p>informatique</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const savedTheme = localStorage.getItem("theme");
+    document.body.classList.add(savedTheme ? savedTheme : "light");
+
+    function toggleTheme() {
+        if (document.body.classList.contains("light")) {
+            document.body.classList.replace("light", "dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.replace("dark", "light");
+            localStorage.setItem("theme", "light");
         }
-    </script>
+    }
+</script>
+<div class="footer-socials">
+    <a href="https://www.linkedin.com/in/TON_PROFIL" target="_blank">
+        <i class="fab fa-snapchat-in"></i>
+    </a>
+    <a href="https://github.com/TON_PROFIL" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.instagram.com/binette_dll?igsh=djdoYWhvMm9xYnpv&utm_source=qr" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:dfatoubintou400@gmail.com">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
 
-</body>
-</html>
+<footer>
+    © 2026 – e-portfolio | Réalisé par moi-même – Tous droits réservés
+</footer>
 
 
 </body>

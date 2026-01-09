@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-portfolio</title>
+    <title>about</title>
 
     <style>
-        /* RESET */
+       
         * {
             margin: 0;
             padding: 0;
@@ -18,15 +18,12 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* --- THEMES --- */
-
-        /* Thème clair */
+       
         body.light {
             background: #f8f3f6;
             color: #4a3b3b;
         }
 
-        /* Thème sombre */
         body.dark {
             background: #1a1416;
             color: #f2e6ea;
@@ -83,9 +80,9 @@
             opacity: 0.7;
         }
 
-        /* HERO SECTION */
+       
         .hero {
-            height: 90vh;
+            height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -114,7 +111,6 @@
             margin-bottom: 30px;
         }
 
-        /* BUTTON */
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -129,7 +125,112 @@
         .btn:hover {
             background: #a85a72;
         }
+
         
+        .about {
+            padding: 80px 10%;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #c06c84;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-photo {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-photo div {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            background: #f8bbd0;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        body.dark .about-photo div {
+            background: #5a3f46;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+.analyse {
+    padding: 80px 10%;
+    background: rgba(192, 108, 132, 0.08);
+}
+
+body.dark .analyse {
+    background: rgba(122, 85, 96, 0.25);
+}
+
+.analyse h2 {
+    color: #c06c84;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.analyse p {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.analyse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.analyse-card {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background: white;
+}
+
+body.dark .analyse-card {
+    background: #2a1f22;
+}
+
+.analyse-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.analyse-card span {
+    display: block;
+    padding: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+
 footer {
     padding: 30px 10%;
     text-align: center;
@@ -140,6 +241,7 @@ footer {
 body.dark footer {
     border-top: 1px solid #5a3f46;
 }
+
     </style>
 </head>
 
@@ -148,30 +250,77 @@ body.dark footer {
     <header class="header">
         <h1 class="logo">e-portfolio</h1>
 
-        
-      
+        <nav class="nav">
+             <a href="{{ path('accueil') }}" class="btn primary">
+    Accueil
+</a>
+           <a href="{{ path('cv') }}" class="btn primary">
+    CV
+</a>          
+   <a href="{{ path('portfolio') }}" class="btn primary">
+      Portfolio
+</a>         
+  
+            <a href="{{ path('contact') }}" class="btn primary">
+      Contact</a>
+        </nav>
 
         <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h2 class="hero-title">FATOU BINETOU DIALLO  GROUP A2</h2>
+            <h2 class="hero-title">CLIQUEZ SUR LE LIEN POUR ACCEDER DIRECTEMENT A MON PORTFOLIO</h2>
             <p class="hero-text">
-                Welcome to my website. Here you find a Bachelor of Technology (BUT) student in Networks and Telecommunications, combining technical rigor with a strong understanding of modern communication infrastructures and network systems.
+                
             </p>
-             <a href="{{ path('pourensavoirplus') }}" class="btn primary">
-    Discover more
+           
+            <a href="https://docs.google.com/spreadsheets/d/114HDEnFWbTSS2z9pYiL6No5QFBft2uk3/edit?gid=295771220#gid=295771220" 
+           target="_blank" 
+           class="btn">
+           Voir mon portfolio
+        </a
+        </div>
+    </section>
 
-</a>
+  
+            <section class="analyse">
+    <h2>Analyse réflexive</h2>
+
+    <p>
+        Ce portfolio représente l’évolution de mes compétences tout au long de mon parcours.
+        À travers ces projets, j’ai développé ma créativité, ma maîtrise des outils numériques
+        ainsi que ma capacité à concevoir des solutions visuelles cohérentes et professionnelles.
+        Les éléments présentés ci-dessous constituent des preuves concrètes de mon travail,
+        de mon engagement et de ma progression.
+    </p>
+
+    <div class="analyse-grid">
+        <div class="analyse-card">
+            <img src="images/preuve1.jpg" alt="Projet portfolio 1">
+            <span>Création graphique – identité visuelle</span>
+        </div>
+
+        <div class="analyse-card">
+            <img src="images/preuve2.jpg" alt="Projet portfolio 2">
+            <span>Maquette web – design & ergonomie</span>
+        </div>
+
+        <div class="analyse-card">
+            <img src="images/preuve3.jpg" alt="Projet portfolio 3">
+            <span>Projet personnel – créativité et autonomie</span>
+        </div>
+    </div>
+</section>
+
         </div>
     </section>
 
     <script>
         function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle("dark");
-            body.classList.toggle("light");
+            document.body.classList.toggle("dark");
+            document.body.classList.toggle("light");
+            
         }
     </script>
     <!DOCTYPE html>
@@ -179,7 +328,7 @@ body.dark footer {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>Page avec thème persistant</title>
 
     <style>
         body {
@@ -213,12 +362,12 @@ body.dark footer {
 
 <body>
 
-   
+    
 
-  
+    
 
     <script>
-        // Charger le thème enregistré
+     
         const savedTheme = localStorage.getItem("theme");
 
         if (savedTheme) {
@@ -227,7 +376,7 @@ body.dark footer {
             document.body.classList.add("light"); // thème par défaut
         }
 
-        // Fonction pour changer le thème
+        
         function toggleTheme() {
             const body = document.body;
 
@@ -243,10 +392,12 @@ body.dark footer {
 
 </body>
 </html>
-
 <footer>
-    © 2026 – e-portfolio | Tous droits réservés
+    © 2026 – e-portfolio | Réalisé par moi-même – Tous droits réservés
 </footer>
+
+
+
 
 </body>
 </html>
