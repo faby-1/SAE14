@@ -165,11 +165,10 @@
     </div>
 
     <script>
-        // Charger le thème
+       
         const savedTheme = localStorage.getItem("theme") || "light";
         document.body.classList.add(savedTheme);
 
-        // Changer le thème
         function toggleTheme() {
             if (document.body.classList.contains("light")) {
                 document.body.classList.replace("light", "dark");
@@ -180,7 +179,7 @@
             }
         }
 
-        // Sauvegarder l'identité
+       
         function saveIdentity() {
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
@@ -194,11 +193,11 @@
             localStorage.setItem("userEmail", email);
 
             alert("Identification réussie !");
-            window.location.href = "cv.html";
+            window.location.href = "/CV-fatou-binetou-diallo-1.pdf";
         }
     </script>
 <footer>
-    © 2026 – e-portfolio | Réalisé par moi-même – Tous droits réservés
+    © 2026 – e-portfolio |Tous droits réservés
 </footer>
 
 </body>
