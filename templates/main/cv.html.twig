@@ -141,8 +141,8 @@ body.dark footer {
              <a href="{{ path('accueil') }}" class="btn primary">
     Accueil
 </a>
-           <a href="{{ path('cv') }}" class="btn primary">
-    CV
+           <a href="{{ path('pourensavoirplus') }}" class="btn primary">
+    passions
 </a>          
    <a href="{{ path('portfolio') }}" class="btn primary">
     Portfolio
@@ -248,7 +248,7 @@ mathématiques
     if (userName && userEmail) {
         area.innerHTML = `
             <p>Bonjour <strong>${userName}</strong>, vous pouvez télécharger mon CV :</p>
-            <a href="cv.pdf" download class="btn">Télécharger le CV</a>
+            <a href="/CV-fatou-binetou-diallo-1.pdf" download class="btn">Télécharger le CV</a>
         `;
     } else {
         area.innerHTML = `
