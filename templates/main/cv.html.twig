@@ -1,291 +1,225 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon CV - Élégance Studio</title>
+{% extends 'base.html.twig' %}
 
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% block body %}
+<style>
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+        color: white;
+        font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            font-family: "Poppins", sans-serif;
-            transition: background 0.4s ease, color 0.4s ease;
-        }
+    .cv-wrapper {
+        max-width: 1100px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
 
-        /* THEMES */
-        body.light {
-            background: #f8f3f6;
-            color: #4a3b3b;
-        }
+    /* HEADER */
+    .cv-header {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 3px solid #60a5fa;
+        margin-right: 40px;
+    }
+    .header-text h1 { font-size: 2.8rem; font-weight: 800; margin: 0; color: white; }
+    .header-text h2 { font-size: 1.8rem; color: #93c5fd; margin-bottom: 15px; }
+    .header-text p { color: #cbd5e1; max-width: 700px; line-height: 1.6; }
 
-        body.dark {
-            background: #1a1416;
-            color: #f2e6ea;
-        }
+    /* LAYOUT */
+    .cv-content { display: flex; }
+    
+    /* GAUCHE (SIDEBAR) */
+    .sidebar {
+        width: 35%;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .sidebar h3 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        color: #60a5fa;
+        margin-top: 30px;
+        border-left: 4px solid #60a5fa;
+        padding-left: 15px;
+        letter-spacing: 1px;
+    }
+    .sidebar ul { list-style: none; padding: 0; margin-top: 15px; }
+    .sidebar ul li { margin-bottom: 10px; color: #e2e8f0; font-size: 0.95rem; }
 
-        /* HEADER */
-        .header {
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffffcc;
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid #e8d8df;
-        }
+    /* DROITE (MAIN) */
+    .main-content { width: 65%; padding: 50px; }
+    .section-title {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: #60a5fa;
+        margin-bottom: 35px;
+        font-weight: bold;
+    }
+    
+    /* TIMELINE STYLE */
+    .timeline { border-left: 2px solid rgba(96, 165, 250, 0.3); padding-left: 30px; position: relative; }
+    .timeline-item { margin-bottom: 40px; position: relative; }
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: #3b82f6;
+        left: -38px;
+        top: 6px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #3b82f6;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .exp-header h4 { color: white; font-size: 1.1rem; margin: 0; }
+    .exp-header span { color: #93c5fd; font-weight: 600; font-size: 0.9rem; }
+    .exp-sub { color: #60a5fa; margin-bottom: 12px; font-weight: 500; }
+    .timeline-item ul li { color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; }
 
-        body.dark .header {
-            background: #2a1f22cc;
-            border-bottom: 1px solid #5a3f46;
-        }
+    /* BOUTON SÉCURISÉ */
+    .download-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 12px 25px;
+        border-radius: 12px;
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+        display: inline-block;
+    }
+    .download-btn:hover { 
+        background: #2563eb; 
+        color: white; 
+        transform: scale(1.05); 
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); 
+    }
+</style>
 
-        .logo {
-            font-size: 1.7rem;
-            font-weight: 600;
-            color: #c06c84;
-        }
-
-        .nav a {
-            margin-left: 25px;
-            text-decoration: none;
-            color: inherit;
-            font-weight: 500;
-        }
-
-        .nav a:hover {
-            color: #c06c84;
-        }
-
-        .theme-btn {
-            padding: 8px 18px;
-            border-radius: 25px;
-            border: 1px solid currentColor;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        /* CV SECTION */
-        .cv-container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: #ffffffaa;
-            border-radius: 20px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        body.dark .cv-container {
-            background: #2a1f22aa;
-        }
-
-        .cv-title {
-            font-size: 2.4rem;
-            color: #c06c84;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #c06c84;
-        }
-
-        .section p, .section li {
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        ul {
-            margin-left: 20px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-            .cv-container {
-                padding: 20px;
-            }
-        }
-        
-footer {
-    padding: 30px 10%;
-    text-align: center;
-    font-size: 0.9rem;
-    border-top: 1px solid #e0c3cc;
-}
-
-body.dark footer {
-    border-top: 1px solid #5a3f46;
-}
-    </style>
-</head>
-
-<body>
-
-   <header class="header">
-        <h1 class="logo">e-portfolio</h1>
-
-        <nav class="nav">
-             <a href="{{ path('accueil') }}" class="btn primary">
-    Accueil
-</a>
-           <a href="{{ path('pourensavoirplus') }}" class="btn primary">
-    passions
-</a>          
-   <a href="{{ path('portfolio') }}" class="btn primary">
-    Portfolio
-</a>         
-            <a href="{{ path('contact') }}" class="btn primary">
-      Contact</a>
-        </nav>
-        <button class="theme-btn" onclick="toggleTheme()">Changer le thème</button>
-    </header>
-
-    <div class="cv-container">
-        <h2 class="cv-title">Ingenieure infrastructures réseaux et télécommunications</h2>
-        <h3>Construire les réseaux d’aujourd’hui, sécuriser les communications de demain.</h3>
-
-        <!-- IDENTITÉ -->
-        <div class="section">
-            <h3>Informations personnelles</h3>
-            <p><strong>Nom :</strong> Fatou Binetou Diallo</p>
-            <p><strong>Email :</strong> dfatoubintou400@gmail.com</p>
-            <p><strong>Téléphone :</strong> 0759805034</p>
-            <p><strong>Adresse :</strong> 52 boulevard de belgique,42300,ROANNE,France</p>
-            <p><strong>Étudiante motivée, je combine sens de l’organisation, esprit d’analyse et volonté d’apprendre pour évoluer dans un environnement professionnel exigeant.</p>
-
+<div class="container">
+    <div class="cv-wrapper">
+        <div class="cv-header">
+            <img src="{{ asset('photo.png') }}" class="profile-pic" alt="Fatou Binetou Diallo">
+            <div class="header-text">
+                <h1>FATOU BINETOU DIALLO</h1>
+                <h2>RECHERCHE D'ALTERNANCE</h2>
+                <p>Passionnée par les infrastructures réseaux, la cybersécurité et l'administration système. Actuellement en BUT R&T, je recherche une alternance de 24 mois pour mettre mes compétences au service de votre infrastructure.</p>
+            </div>
         </div>
 
-        <div class="section">
-            <h3>Experiences professionnel</h3>
-            <ul>
-                <li><strong>Caissière
-Auchan - Juin 2024 à septembre 2024 - CDD - Dakar - Sénégal:</strong> Service et relation client dynamique : Accueil des clients, prise de commandes, service
-en salle lors des pics d'affluence, démontrant un excellent sens du contact et une
-résistance au stress.</li>
-                <li><strong>Benevolat
-OPAN - Août 2025:</strong> monitrice d'un camp de vacance pendant 15 jours
-animation activité pour enfant. </li>
-<li><strong>Employée Polyvalente à KFC,YOFF,SENEGAL - Aout 2022 à septembre2022:</strong> travail en équipe coordonné : Collaboration étroite avec la
-cuisine et le reste du personnel de salle pour assurer une
-fluidité parfaite du service </li>
-            </ul>
-        </div>
+        <div class="cv-content">
+            <div class="sidebar">
+                <h3>Contact</h3>
+                <ul>
+                    <li>📧 dfatoubintou400@gmail.com</li>
+                    <li>🪪 Permis B</li>
+                    <li>📍 42300, ROANNE</li>
+                </ul>
 
-      
-        <div class="section">
-            <h3>Formations</h3>
-            <ul>
-                <li><strong>Premiere année BUT reseaux et telcommunication
-</strong> – IUT de ROANNE ( septembre 2025 - présent)</li>
-                <li><strong> Baccalauréat de sciences experimentales</strong>
- - ECOLE PRIVÉE MAME ABDOU DABAKH
-(Octobre 2024 à juillet 2025) : Mention assez bien Formation que j'ai fait au
-Sénégal et qui m'a apporté un bagage scientifique lourd, notamment en
-mathématiques
-</li>
- <li><strong> brevet de fin d'étude moyen</strong>
-(Octobre 2021 à juillet 2022)
- - ECOLE PRIVÉE MAME ABDOU DABAKH
-(Octobre 2024 à juillet 2025)</li>
+                <h3>Compétences Techniques</h3>
+                <ul>
+                    <li>Réseaux (Cisco, OSPF, RIP)</li>
+                    <li>Infrastructures & Câblage</li>
+                    <li>Systèmes (Linux, Windows Server)</li>
+                    <li>Sécurité (ACL, NAT, VPN)</li>
+                    <li>Outils (Docker, Wireshark)</li>
+                </ul>
 
-            </ul>
-        </div>
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Communication & Collaboration</li>
+                    <li>Adaptabilité</li>
+                    <li>Rigueur & Organisation</li>
+                </ul>
 
-      
-        <div class="section">
-            <h3>Compétences</h3>
-            <ul>
-                <li>Polyvalence</li>
-                <li>assistance de l'administrateur réseaux</li>
-                <li>HTML / CSS / Web</li>
-                <li>Travail en équipe</li>
-                <li>Communication professionnelle</li>
-            </ul>
-        </div>
+                <h3>Langues</h3>
+                <ul>
+                    <li>Français (Courant)</li>
+                    <li>Anglais (Technique)</li>
+                </ul>
 
-       
+                <div class="mt-5">
+                    {# Redirection vers la page contact avec un paramètre d'identification #}
+                    <a href="{{ path('contact', {'auth': 'required'}) }}" class="download-btn">
+                         S'identifier pour télécharger
+                    </a>
+                </div>
+            </div>
 
-        <!-- CENTRES D'INTÉRÊT -->
-        <div class="section">
-            <h3>Langues</h3>
-            <p><strong> Français</strong>: courant
-            <p><strong> Anglais</strong>: niveau B1
-        </div>
-        <div class="section">
-            <h3>Centres d'interet</h3>
-            <p><strong> Sport</strong>
-            <p><strong> photographie</strong>
-            <p><strong> Découverte</strong>
-            
+            <div class="main-content">
+                <div class="section-title">Expérience Professionnelle</div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="exp-header">
+                            <h4>Projet Réseaux (SAE - IUT)</h4>
+                            <span>2025-2026</span>
+                        </div>
+                        <ul>
+                            <li>Sécurisation et supervision d'infrastructures</li>
+                            <li>Installation et configuration de serveurs WEB</li>
+                            <li>Analyse de trames et traitement de données réseau</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="exp-header">
+                            <h4>Campus Solidaire</h4>
+                            <span>2025 - Présent</span>
+                        </div>
+                        <div class="exp-sub">Responsable Événementiel</div>
+                        <ul>
+                            <li>Coordination logistique de projets solidaires</li>
+                            <li>Animation d'équipe et communication externe</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="exp-header">
+                            <h4>JFMI - Bénévolat</h4>
+                            <span>Déc. 2025</span>
+                        </div>
+                        <ul>
+                            <li>Atelier de création web pour collégiennes</li>
+                            <li>Promotion des métiers du numérique</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title mt-5">Formations</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="exp-header">
+                            <h4>BUT Réseaux & Télécommunications</h4>
+                            <span>2025-2026</span>
+                        </div>
+                        <div class="exp-sub">IUT de Roanne</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="exp-header">
+                            <h4>Baccalauréat Scientifique</h4>
+                            <span>2024-2025</span>
+                        </div>
+                        <div class="exp-sub">Sénégal</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="download-area" style="text-align:center; margin-top:30px;"></div>
-
-<script>
-    // Charger le thème
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.body.classList.add(savedTheme);
-
-    // Vérifier l'identité
-    const userName = localStorage.getItem("userName");
-    const userEmail = localStorage.getItem("userEmail");
-
-    const area = document.getElementById("download-area");
-
-    if (userName && userEmail) {
-        area.innerHTML = `
-            <p>Bonjour <strong>${userName}</strong>, vous pouvez télécharger mon CV :</p>
-            <a href="/CV-fatou-binetou-diallo-1.pdf" download class="btn">Télécharger le CV</a>
-        `;
-    } else {
-        area.innerHTML = `
-            <p style="color:#c06c84; font-weight:600;">
-                Vous devez vous identifier avant de télécharger le CV.
-            </p>
-             <a href="{{ path('contact') }}" class="btn primary">
-      Contact</a>
-        `;
-    }
-</script>
-
-
-    <script>
-        // Charger le thème enregistré
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) {
-            document.body.classList.add(savedTheme);
-        } else {
-            document.body.classList.add("light");
-        }
-
-        // Changer le thème
-        function toggleTheme() {
-            if (document.body.classList.contains("light")) {
-                document.body.classList.replace("light", "dark");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.body.classList.replace("dark", "light");
-                localStorage.setItem("theme", "light");
-            }
-        }
-    </script>
-    <footer>
-    © 2026 – e-portfolio |  Tous droits réservés
-</footer>
-
-
-</body>
-</html>
+</div>
+{% endblock %}

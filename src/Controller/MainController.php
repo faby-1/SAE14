@@ -4,47 +4,31 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-final class MainController extends AbstractController
+class MainController extends AbstractController
 {
-    #[Route('/', name: 'accueil')]
-    public function accueil(): Response
+    #[Route('/', name: 'home')]
+    public function index(): Response
     {
-        return $this->render('main/accueil.html.twig');
+        return $this->render('main/index.html.twig');
     }
-        #[Route('/pourensavoirplus', name: 'pourensavoirplus')]
-        public function pourensavoirplus(): Response
-        {
-        return $this->render('main/pourensavoirplus.html.twig');
-        }
 
-        #[Route('/cv', name: 'cv')]
-        public function cv(): Response
-        {
-        return $this->render('main/cv.html.twig');
-        }
-
-
-
-        #[Route('/contact', name: 'contact')]
-        public function contact(): Response
-        {
+    #[Route('/contact', name: 'contact')]
+    public function contact(): Response
+    {
         return $this->render('main/contact.html.twig');
-        }
-
-        #[Route('/portfolio', name: 'portfolio')]
-        public function portfolio(): Response
-        {
-        return $this->render('main/portfolio.html.twig');
-        }
     }
 
+    #[Route('/cv', name: 'cv')]
+    public function cv(): Response
+    {
+        return $this->render('main/cv.html.twig');
+    }
 
-
-
-
-
-
-
-
+    #[Route('/portfolio', name: 'portfolio')]
+    public function portfolio(): Response
+    {
+        return $this->render('main/portfolio.html.twig');
+    }
+}
